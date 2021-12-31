@@ -233,7 +233,6 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  console.log(value, def);
   if (Number.isNaN(+value)) return def;
   return +value;
 }

@@ -273,8 +273,13 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  let newArr = [];
+  arr.reduce((acc, item, index) => {
+    newArr = newArr.concat(Array.from({ length: index + 1 }).fill(item));
+    return acc;
+  }, 0);
+  return newArr;
 }
 
 
@@ -327,8 +332,16 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const newArr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  let result = [];
+  newArr.reduce((acc, item) => {
+    if (arr.includes(item)) {
+      result = result.concat(arr.filter((elem) => elem === item));
+    }
+    return acc;
+  }, 0);
+  return result;
 }
 
 /**
@@ -451,12 +464,16 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  // const arrLine = Array(5).fill(0);
-  // const arr = Array(5).fill(arrLine);
-  // arr.map((item, index) => item[index] = 1);
-  // console.log(n, arr);
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  const arr = Array(n).fill(0);
+  const newArr = Array(n).fill([]);
+  arr.reduce((acc, item, index) => {
+    const lineArr = Array(n).fill(0);
+    lineArr[acc] = 1;
+    newArr[index] = newArr[index].concat(lineArr);
+    return acc + 1;
+  }, 0);
+  return newArr;
 }
 
 /**
@@ -592,8 +609,19 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const head = arr.slice(0, Math.floor(arr.length / 2));
+  const tail = arr.length !== 1 ? arr.slice(Math.ceil(arr.length / 2), arr.length)
+    : arr.slice(Math.floor(arr.length / 2), arr.length);
+  let newArr = [];
+  if (arr.length % 2 === 0 || arr.length === 1) {
+    newArr = tail.concat(head);
+  } else {
+    newArr = tail;
+    newArr.push(arr[Math.floor(arr.length / 2)]);
+    newArr = newArr.concat(head);
+  }
+  return newArr;
 }
 
 

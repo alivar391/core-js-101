@@ -8,7 +8,7 @@
 
 
 /**
- * Returns the rectangle object with width and height parameters and getArea() method
+ * Returns  the rectangle object with width and height parameters and getArea() method
  *
  * @param {number} width
  * @param {number} height

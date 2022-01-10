@@ -58,6 +58,8 @@ function willYouMarryMe(isPositiveAnswer) {
  */
 function processAllPromises(/* array */) {
   throw new Error('Not implemented');
+  // console.log(array);
+  // return 1;
 }
 
 /**
